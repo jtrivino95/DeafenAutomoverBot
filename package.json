@@ -4,6 +4,7 @@
   "description": "Simple Discord Bot to move deafen AFK users to another channel.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jtrivino95@gmail.com",
