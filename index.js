@@ -27,3 +27,5 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
 });
 
 bot.login(token)
+
+app.listen(process.env.PORT || 8080);
