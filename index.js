@@ -10,19 +10,24 @@ bot.on('ready', () => {
 
 prev_channel = [];
 const canal_AFK_id = '785554617080873000'
+const canal_Imperio_de_Diego = '411660383577702402'
 
 bot.on('voiceStateUpdate', (oldMember, newMember) => {
-    // When somebody selfdeafs
+	// When somebody selfdeafs
 	if (!oldMember.selfDeaf && newMember.selfDeaf) {
-	    prev_channel[newMember.member.id] = newMember.channelID
-        newMember.setChannel(canal_AFK_id)
+		prev_channel[newMember.member.id] = newMember.channelID
+		newMember.setChannel(canal_AFK_id)
 	}
 
 	// When somebody selfundeafs
 	if (oldMember.selfDeaf && !newMember.selfDeaf) {
-        if(newMember.channelID === canal_AFK_id){
-            newMember.setChannel(prev_channel[newMember.member.id])
-        }
+		if(newMember.channelID === canal_AFK_id){
+			if (prev_channel[newMember.member.id]) {
+				newMember.setChannel(prev_channel[newMember.member.id])
+			} else {
+				newMember.setChannel(canal_Imperio_de_Diego)
+			}
+		}
 	}
 });
 
